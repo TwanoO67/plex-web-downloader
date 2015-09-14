@@ -8,7 +8,8 @@ npm install
 //pour reprendre le projet depuis git
 npm install
 npm start
-ouvrir localhost:3000
+ou sous debian: nodejs ./bin/www
+puis ouvrir localhost:3000
 
 //pour installer plex (depuis un dockerfile)
 mkdir ~/plex-config
