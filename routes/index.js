@@ -40,7 +40,9 @@ router.get('/', function(req, res, next) {
     + " FROM metadata_items i, media_parts p "
     + " WHERE p.media_item_id=i.id ORDER BY i.title ASC", function(err, row) {
         var tab = row.file.split('/');
-        var filename = tab[tab.length -1];
+        var tab2 = tab[tab.length -1].split('\\');
+        var filename = tab2[tab2.length -1];
+        if(row.title != '')
         html += "<tr><td><a href='/file/"+ row.id + "/"+filename+"'> " + row.title + "</a></td><td>"+row.second+"</td><td>"+row.year+"</td></tr>";
     },
     //aprés toute les opération de la base
