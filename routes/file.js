@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/:id', function (req, res, next) {
+router.get('/:id/:filename', function (req, res, next) {
 
   var config = require('../config');
   var db = config.init_db();

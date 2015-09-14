@@ -6,12 +6,14 @@ cd nom_du_projet
 npm install
 
 //pour reprendre le projet depuis git
+sous debian: ln -s /usr/bin/nodejs /usr/local/bin/node
 npm install
 npm start
-ou sous debian: nodejs ./bin/www
 puis ouvrir localhost:3000
 
 //pour installer plex (depuis un dockerfile)
 mkdir ~/plex-config
 sudo chown 797:797 -R ~/plex-config
-sudo docker run -d --restart=always -v ~/plex-config:/config -v ~/Movies:/media -p 32400:32400 wernight/plex-media-server
+sudo docker run -d --restart=always -v ~/plex-config:/config -v ~/Movies:/media/plex -p 32400:32400 wernight/plex-media-server
+sudo chmod 777 ~/plex-config/Plex\ Media\ Server/Plug-in\ Support/Databases/*
+sudo ln -s ~/Movies /media/plex
