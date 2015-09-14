@@ -11,10 +11,12 @@ Mac OS X:
 Windows XP, Server 2003, ou Home Server:
 C:\Documents and Settings\yourusername\Local Settings\Application Data\Plex Media Server\Plug-in Support\Databases\com.plexapp.plugins.library.db
 
+Docker
+/home/username/plex-config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db
 */
 
 module.exports = {
-    database: '/Users/aweber/Desktop/com.plexapp.plugins.library.db',
+    database: "/home/antoine/plex-config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db",
 
 
     init_db: function(){
