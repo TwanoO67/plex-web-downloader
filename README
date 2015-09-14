@@ -1,3 +1,9 @@
+Plex Web Downloader
+
+Ce projet permet de créer une liste de vos fichiers vidéo plex et de les partager aux travers d'une interface web.
+
+
+
 //créée initialement avec
 node install express -g
 node install express-generator -g
@@ -5,15 +11,17 @@ express nom_du_projet
 cd nom_du_projet
 npm install
 
-//pour reprendre le projet depuis git
+//pour installer le projet depuis git
 sous debian: ln -s /usr/bin/nodejs /usr/local/bin/node
 npm install
 npm start
-puis ouvrir localhost:3000
+puis ouvrir http://localhost:3000
 
 //pour installer plex (depuis un dockerfile)
 mkdir ~/plex-config
 sudo chown 797:797 -R ~/plex-config
 sudo docker run -d --restart=always -v ~/plex-config:/config -v ~/Movies:/media/plex -p 32400:32400 wernight/plex-media-server
 sudo chmod 777 ~/plex-config/Plex\ Media\ Server/Plug-in\ Support/Databases/*
+sudo chmod 777 ~/Movies
 sudo ln -s ~/Movies /media/plex
+configurer vos chaines sur: http://localhost:32400/web/index.html

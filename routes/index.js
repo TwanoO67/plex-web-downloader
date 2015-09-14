@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   var config = require('../config');
   var db = config.init_db();
 
-  var html = "<html><head>"
+  var html = "<!doctype html><html lang='fr'><head><meta charset='UTF-8'><head>"
   +"<script type='text/javascript' src='//code.jquery.com/jquery-1.11.3.min.js'></script>"
   +"<script type='text/javascript' src='https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js'></script>"
   +"<script type='text/javascript' src='https://cdn.datatables.net/1.10.9/js/dataTables.bootstrap.min.js'></script>"
@@ -20,6 +20,8 @@ router.get('/', function(req, res, next) {
   + '      <thead>'
   + '          <tr>'
   + '              <th>Nom</th>'
+  + '              <th>Durée</th>'
+  + '              <th>Année</th>'
   + '          </tr>'
   + '      </thead>'
   + '      <tbody>';
@@ -34,10 +36,12 @@ router.get('/', function(req, res, next) {
     //}
     //stmt.finalize();
 
-    db.each("SELECT i.id as id, i.title as title, p.file as file FROM metadata_items i, media_parts p WHERE p.media_item_id=i.id ORDER BY i.title ASC", function(err, row) {
+    db.each("SELECT i.id as id, i.title as title, p.file as file, i.duration as second, i.year as year"
+    + " FROM metadata_items i, media_parts p "
+    + " WHERE p.media_item_id=i.id ORDER BY i.title ASC", function(err, row) {
         var tab = row.file.split('/');
         var filename = tab[tab.length -1];
-        html += "<tr><td><a href='/file/"+ row.id + "/"+filename+"'> " + row.title + "</a></td></tr>";
+        html += "<tr><td><a href='/file/"+ row.id + "/"+filename+"'> " + row.title + "</a></td><td>"+row.second+"</td><td>"+row.year+"</td></tr>";
     },
     //aprés toute les opération de la base
     function() {
