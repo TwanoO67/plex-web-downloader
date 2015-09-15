@@ -42,16 +42,6 @@ router.get('/:id/:filename', function (req, res, next) {
   db.close();
 
 
-
-
-
-
-
-
-
-
-
-
 })
 
 module.exports = router;

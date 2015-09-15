@@ -15,7 +15,7 @@ block content
       each video, i in videos
         tr
           td
-            a(href="/file/#{video.id}/#{video.filename}")= video.title
+            a(href="/movie/#{video.id}")= video.title
           if(channel.type == 2)
             td
               if(typeof video.info_meta !== 'undefined' && typeof video.info_meta.show !== 'undefined')

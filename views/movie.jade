@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= movie.title
+
+  label Note
+  p= movie.rating
+
+  label Télécharger
+  a(href="/file/#{movie.id}/#{movie.title}")= movie.title
+  br
+
+  label Résumé
+  p= movie.summary
+  br
+
+  label Genre
+  each tag, i in movie.tags_genre
+    if(tag!='')
+      span= tag
+      | &nbsp;
+  br
+
+  label Acteurs
+  each tag, i in movie.tags_star
+    if(tag!='')
+      span= tag
+      | &nbsp;
+  br
