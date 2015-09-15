@@ -3,19 +3,55 @@ Plex Web Downloader
 Ce projet permet de créer une liste de vos fichiers vidéo plex et de les partager aux travers d'une interface web.
 
 
+==================
+INSTALLATION
 
-//créée initialement avec
+Sur Windows
+  pré requis, installer git ( https://git-scm.com/download/win )
+  pré requis, installer nodejs 0.12.x ( https://nodejs.org/dist/v0.12.7/ )
+  ouvrir cmb, se deplacer dans un repertoire où vous voulez installer
+  git clone https://github.com/TwanoO67/plex-web-downloader.git
+  cd plex-web-downloader
+  npm install
+  modifier le fichier config.js, pour le chemin de database (attention il faut doubler les \ et proteger les espaces )
+    exemple: C:\\Users\\yourUsername\\AppData\\Local\\Plex Media Server\\Plug-in\ Support\\Databases\\com.plexapp.plugins.library.db
+  npm start
+  puis ouvrir http://localhost:3000
+
+Sous mac
+  pré requis, nodejs
+    sinon installer homebrew ( ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" )
+    puis brew install node
+  git clone https://github.com/TwanoO67/plex-web-downloader.git
+  cd plex-web-downloader
+  npm install
+  modifier le fichier config.js, pour le chemin de database
+    exemple: /Users/yourUsername/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db
+  npm start
+  puis ouvrir http://localhost:3000
+
+Sous ubuntu
+  pré requis nodejs, ou apt-get install nodejs
+  ln -s /usr/bin/nodejs /usr/local/bin/node
+  git clone https://github.com/TwanoO67/plex-web-downloader.git
+  cd plex-web-downloader
+  npm install
+  modifier le fichier config.js, pour le chemin de database
+    exemple: /home/yourUsername/plex-config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db
+  npm start
+  puis ouvrir http://localhost:3000
+
+
+
+==================
+DEVELOPPEMENT
+
+//le projet a été créée initialement avec
 node install express -g
 node install express-generator -g
 express nom_du_projet
 cd nom_du_projet
 npm install
-
-//pour installer le projet depuis git
-sous debian: ln -s /usr/bin/nodejs /usr/local/bin/node
-npm install
-npm start
-puis ouvrir http://localhost:3000
 
 //pour installer plex (depuis un dockerfile)
 mkdir ~/plex-config

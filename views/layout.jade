@@ -9,4 +9,24 @@ html
     script(type='text/javascript', src='//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js')
     script(type='text/javascript', src='//cdn.datatables.net/1.10.9/js/dataTables.bootstrap.min.js')
   body
-    block content
+
+    nav.navbar.navbar-default.navbar-static-top.transparent(role="navigation")
+      div.container
+        div.navbar-header
+          button.navbar-toggle(type="button",data-toggle="collapse",data-target="#collapse-menu")
+            span.sr-only Toggle navigation
+            i.fa.fa-bars
+          a.navbar-brand(href="/")
+            b Plex&nbsp;
+            | Web Downloader
+
+        div#collapse-menu.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li.active
+              a(href="/") Accueil
+            li
+              a(href="/divers") Divers
+
+    div.wrapper
+      div.container
+        block content

@@ -3,7 +3,7 @@
 Chercher votre fichier de base de données plex, grace à ces indications:
 
 Windows Vista, Server 2008, Server 2008 R2, WHS 2011, Windows 7, Windows 8:
-C:\Users\yourusername\AppData\Local\Plex Media Server\Plug-in Support\Databases\com.plexapp.plugins.library.db
+C:\\Users\\yourusername\\AppData\\Local\\Plex Media Server\\Plug-in\ Support\\Databases\\com.plexapp.plugins.library.db
 
 Mac OS X:
 ~/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db

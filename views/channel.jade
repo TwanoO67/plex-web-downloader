@@ -1,12 +1,14 @@
 extends layout
 
 block content
-  h1= title
+  h1= channel.name
 
   table(id="example", class="table table-striped table-bordered", cellspacing="0", width="100%")
     thead
       tr
         th Nom
+        if(channel.type == 2)
+          th Série
         th Durée
         th Année
     tbody
@@ -14,6 +16,10 @@ block content
         tr
           td
             a(href="/file/#{video.id}/#{video.filename}")= video.title
+          if(channel.type == 2)
+            td
+              if(typeof video.info_meta !== 'undefined' && typeof video.info_meta.show !== 'undefined')
+                #{video.info_meta.show}
           td= video.second
           td= video.year
       script.
