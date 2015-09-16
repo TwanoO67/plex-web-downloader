@@ -61,3 +61,13 @@ sudo chmod 777 ~/plex-config/Plex\ Media\ Server/Plug-in\ Support/Databases/*
 sudo chmod 777 ~/Movies
 sudo ln -s ~/Movies /media/plex
 configurer vos chaines sur: http://localhost:32400/web/index.html
+
+
+===================
+TODO Liste
+gérer les images des vignettes
+faire une page spéciales pour les séries
+gérer les téléchargements multi-source en proposant un lien aria2 (voir aria2.sourceforge.net)
+intégré web ui: http://ziahamza.github.io/webui-aria2/
+clusterisé avec un fork par cpu
+mettre en place une limite d'upload activable à la demande
