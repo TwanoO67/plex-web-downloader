@@ -20,10 +20,10 @@ block content
           if(channel.type == 2)
             td
               if(typeof video.info_meta !== 'undefined' && typeof video.info_meta.show !== 'undefined')
-                #{video.info_meta.show}
+              | #{video.info_meta.show}
             td
               if(typeof video.info_meta !== 'undefined' && typeof video.info_meta.season !== 'undefined' && typeof video.info_meta.episode !== 'undefined')
-                S #{video.info_meta.season} E #{video.info_meta.episode}
+              | S #{video.info_meta.season} E #{video.info_meta.episode}
           td= video.second
           td= video.year
       script.
