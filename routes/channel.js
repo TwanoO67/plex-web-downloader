@@ -14,8 +14,13 @@ router.get('/:id', function(req, res, next) {
   };
 
   function formatDuree(time) {
-    var d = new Date(time); // js fonctionne en milisecondes
-    return addZero(d.getHours()) + "h "+ addZero(d.getMinutes()) + "m "+ addZero(d.getSeconds()) + "s ";
+    if(typeof time !== 'undefined' && time != "" && time > 0){
+      var d = new Date(time); // js fonctionne en milisecondes
+      return addZero(d.getHours()-1) + "h "+ addZero(d.getMinutes()) + "m "+ addZero(d.getSeconds()) + "s ";
+    }
+    else {
+      return "";
+    }
   }
 
   function humanFileSize(bytes, si) {
@@ -43,7 +48,7 @@ router.get('/:id', function(req, res, next) {
     //    stmt.run("Ipsum " + i);
     //}
     //stmt.finalize();
-    
+
     db.get("SELECT id, name, section_type as type"
     + " FROM library_sections WHERE id = ? ORDER BY name ASC",req.params.id, function(err, row) {
       channel_info = row;
