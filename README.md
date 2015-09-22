@@ -34,7 +34,11 @@ INSTALLATION
 
   pré requis, nodejs
 
-  sinon installer homebrew ( ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ) et :
+  sinon installer homebrew (
+
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  et :
 
     brew install node
 
@@ -55,9 +59,13 @@ INSTALLATION
 
 **Sous Ubuntu**
 
-  pré requis nodejs, ou apt-get install nodejs
+  pré requis nodejs, ou
+
+    apt-get install nodejs
 
     ln -s /usr/bin/nodejs /usr/local/bin/node
+
+  puis, se déplacer dans votre repertoire pour l'install et :
 
     git clone https://github.com/TwanoO67/plex-web-downloader.git
 
