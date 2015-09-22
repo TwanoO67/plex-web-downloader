@@ -9,6 +9,8 @@ block content
         th Nom
         if(channel.type == 2)
           th Série
+          th Saison
+          th Episode
         th Durée
         th Année
     tbody
@@ -20,6 +22,12 @@ block content
             td
               if(typeof video.info_meta !== 'undefined' && typeof video.info_meta.show !== 'undefined')
                 #{video.info_meta.show}
+            td
+              if(typeof video.info_meta !== 'undefined' && typeof video.info_meta.season !== 'undefined')
+                #{video.info_meta.season}
+            td
+              if(typeof video.info_meta !== 'undefined' && typeof video.info_meta.episode !== 'undefined')
+                #{video.info_meta.episode}
           td= video.second
           td= video.year
       script.
