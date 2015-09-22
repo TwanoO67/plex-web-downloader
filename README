@@ -64,7 +64,15 @@ configurer vos chaines sur: http://localhost:32400/web/index.html
 
 
 ===================
+COMPILATION
+
+npm install enclose -g
+enclose -o bin/mac_bin --loglevel info -c enclose_config.js -v 0.12.7 ./bin/www
+
+
+===================
 TODO Liste
+ajouter une présentation sur l'index, configurable dans config.js
 gérer les images des vignettes
 faire une page spéciales pour les séries
 gérer les téléchargements multi-source en proposant un lien aria2 (voir aria2.sourceforge.net)
