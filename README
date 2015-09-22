@@ -1,12 +1,13 @@
 Plex Web Downloader
+===============
 
 Ce projet permet de créer une liste de vos fichiers vidéo plex et de les partager aux travers d'une interface web.
 
 
-==================
 INSTALLATION
+--------------------
 
-Sur Windows
+**Sur Windows**
   pré requis, installer git ( https://git-scm.com/download/win )
   pré requis, installer nodejs 0.12.x ( https://nodejs.org/dist/v0.12.7/ )
   ouvrir l'invite de commande 'cmb', puis se deplacer dans un repertoire où vous voulez installer
@@ -18,7 +19,7 @@ Sur Windows
   taper: npm start
   puis ouvrir http://localhost:3000
 
-Sous mac
+**Sous MacOS**
   pré requis, nodejs
     sinon installer homebrew ( ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" )
     puis brew install node
@@ -30,7 +31,7 @@ Sous mac
   npm start
   puis ouvrir http://localhost:3000
 
-Sous ubuntu
+**Sous Ubuntu**
   pré requis nodejs, ou apt-get install nodejs
   ln -s /usr/bin/nodejs /usr/local/bin/node
   git clone https://github.com/TwanoO67/plex-web-downloader.git
@@ -42,9 +43,8 @@ Sous ubuntu
   puis ouvrir http://localhost:3000
 
 
-
-==================
 DEVELOPPEMENT
+--------------------
 
 //le projet a été créée initialement avec
 node install express -g
@@ -63,19 +63,19 @@ sudo ln -s ~/Movies /media/plex
 configurer vos chaines sur: http://localhost:32400/web/index.html
 
 
-===================
 COMPILATION
+--------------------
 
 npm install enclose -g
 enclose -o bin/mac_bin --loglevel info -c enclose_config.js -v 0.12.7 ./bin/www
 
 
-===================
 TODO Liste
-ajouter une présentation sur l'index, configurable dans config.js
-gérer les images des vignettes
-faire une page spéciales pour les séries
-gérer les téléchargements multi-source en proposant un lien aria2 (voir aria2.sourceforge.net)
-intégré web ui: http://ziahamza.github.io/webui-aria2/
-clusterisé avec un fork par cpu
-mettre en place une limite d'upload activable à la demande
+--------------------
+* Ajouter une présentation sur l'index, configurable dans config.js
+* Gérer les images des vignettes
+* Faire une page spéciales pour les séries
+* Gérer les téléchargements multi-source en proposant un lien aria2 (voir aria2.sourceforge.net)
+* Intégré web ui: http://ziahamza.github.io/webui-aria2/
+* Clusterisé avec un fork par cpu
+* Mettre en place une limite d'upload activable à la demande
