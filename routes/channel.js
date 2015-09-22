@@ -19,7 +19,7 @@ router.get('/:id', function(req, res, next) {
     //stmt.finalize();
 
     db.get("SELECT id, name, section_type as type"
-    + " FROM library_sections ORDER BY name ASC", function(err, row) {
+    + " FROM library_sections WHERE id = ? ORDER BY name ASC",req.params.id, function(err, row) {
       channel_info = row;
     });
 
