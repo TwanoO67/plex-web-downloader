@@ -12,6 +12,7 @@ block content
           th Saison & Episode
         th Durée
         th Année
+        th Taille
     tbody
       each video, i in videos
         tr
@@ -24,8 +25,9 @@ block content
             td
               if(typeof video.season_episode !== 'undefined')
               | #{video.season_episode}
-          td= video.second
+          td= video.duree
           td= video.year
+          td= video.size
       script.
         $(document).ready(function() {
           $('#example').DataTable();

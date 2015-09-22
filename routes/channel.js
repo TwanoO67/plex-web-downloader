@@ -8,6 +8,32 @@ router.get('/:id', function(req, res, next) {
 
   var data = [];
   var channel_info = [];
+
+  function addZero(v) {
+    return v.toString().replace(/^(\d)$/,'0$1');
+  };
+
+  function formatDuree(time) {
+    var d = new Date(time * 1000); // js fonctionne en milisecondes
+    return addZero(d.getHours()) + "h "+ addZero(d.getMinutes()) + "m "+ addZero(d.getSeconds()) + "s ";
+  }
+
+  function humanFileSize(bytes, si) {
+    var thresh = si ? 1000 : 1024;
+    if(Math.abs(bytes) < thresh) {
+        return bytes + ' B';
+    }
+    var units = si
+        ? ['kB','MB','GB','TB','PB','EB','ZB','YB']
+        : ['KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB'];
+    var u = -1;
+    do {
+        bytes /= thresh;
+        ++u;
+    } while(Math.abs(bytes) >= thresh && u < units.length - 1);
+    return bytes.toFixed(1)+' '+units[u];
+}
+
   //on fais toute les opération de base a la suite
   db.serialize(function() {
 
@@ -23,7 +49,7 @@ router.get('/:id', function(req, res, next) {
       channel_info = row;
     });
 
-    db.each("SELECT i.id as id, i.title as title, t.hints as hints, p.file as file, i.duration as second, i.year as year"
+    db.each("SELECT i.id as id, i.title as title, t.hints as hints, p.file as file, i.duration as second, i.size, i.year as year"
     + " FROM media_items t, metadata_items i, media_parts p "
     + " WHERE p.media_item_id=i.id AND t.metadata_item_id = i.id AND i.title != '' AND t.library_section_id = ? "
     + " ORDER BY i.title ASC",req.params.id, function(err, row) {
@@ -44,8 +70,11 @@ router.get('/:id', function(req, res, next) {
 
         //formattage des données
         if(typeof row.info_meta !== 'undefined' && typeof row.info_meta.season !== 'undefined' && typeof row.info_meta.episode !== 'undefined'){
-          row.season_episode = "S"+row.info_meta.season.toString().replace(/^(\d)$/,'0$1')+"E"+row.info_meta.episode.toString().replace(/^(\d)$/,'0$1');
+          row.season_episode = "S"+addZero(row.info_meta.season)+"E"+addZero(row.info_meta.episode);
         }
+
+        row.duree = formatDuree(row.second);
+        row.size = humanFileSize(row.size,true);
 
         data.push(row);
     },
