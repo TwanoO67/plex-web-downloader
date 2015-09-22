@@ -14,7 +14,7 @@ router.get('/:id', function(req, res, next) {
   };
 
   function formatDuree(time) {
-    var d = new Date(time * 1000); // js fonctionne en milisecondes
+    var d = new Date(time); // js fonctionne en milisecondes
     return addZero(d.getHours()) + "h "+ addZero(d.getMinutes()) + "m "+ addZero(d.getSeconds()) + "s ";
   }
 
@@ -32,7 +32,7 @@ router.get('/:id', function(req, res, next) {
         ++u;
     } while(Math.abs(bytes) >= thresh && u < units.length - 1);
     return bytes.toFixed(1)+' '+units[u];
-}
+  }
 
   //on fais toute les opération de base a la suite
   db.serialize(function() {
@@ -43,21 +43,16 @@ router.get('/:id', function(req, res, next) {
     //    stmt.run("Ipsum " + i);
     //}
     //stmt.finalize();
-
+    
     db.get("SELECT id, name, section_type as type"
     + " FROM library_sections WHERE id = ? ORDER BY name ASC",req.params.id, function(err, row) {
       channel_info = row;
     });
-
-    db.each("SELECT i.id as id, i.title as title, t.hints as hints, p.file as file, i.duration as second, i.size as size, i.year as year"
+console.log("test2")
+    db.each("SELECT i.id as id, i.title as title, t.hints as hints, p.file as file, i.duration as second, t.size as size, i.year as year"
     + " FROM media_items t, metadata_items i, media_parts p "
     + " WHERE p.media_item_id=i.id AND t.metadata_item_id = i.id AND i.title != '' AND t.library_section_id = ? "
     + " ORDER BY i.title ASC",req.params.id, function(err, row) {
-
-        var tab = row.file.split('/');
-        var tab2 = tab[tab.length -1].split('\\');
-        var filename = tab2[tab2.length -1];
-        row.filename = filename;
 
         //découpage des hints
         var params = {};
@@ -69,6 +64,11 @@ router.get('/:id', function(req, res, next) {
         row.info_meta = params;
 
         //formattage des données
+        var tab = row.file.split('/');
+        var tab2 = tab[tab.length -1].split('\\');
+        var filename = tab2[tab2.length -1];
+        row.filename = filename;
+
         if(typeof row.info_meta !== 'undefined' && typeof row.info_meta.season !== 'undefined' && typeof row.info_meta.episode !== 'undefined'){
           row.season_episode = "S"+addZero(row.info_meta.season)+"E"+addZero(row.info_meta.episode);
         }
