@@ -30,5 +30,16 @@ block content
           td= video.size
       script.
         $(document).ready(function() {
-          $('#example').DataTable();
+          $('#example').DataTable({
+              "language": {
+                  "url": "//cdn.datatables.net/plug-ins/1.10.8/i18n/French.json"
+              }/*,
+              "columnDefs": [
+                { "targets": 2,
+                  "searchable": false,
+                  "orderable": false,
+                }
+              ]*/
+              //"dom": '<"toolbar">frtip'
+            });
         });
