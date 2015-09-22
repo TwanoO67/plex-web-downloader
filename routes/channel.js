@@ -40,8 +40,12 @@ router.get('/:id', function(req, res, next) {
           var tab2 = val.split('=');
           params[tab2[0]] = decodeURIComponent(tab2[1]);
         });
-
         row.info_meta = params;
+
+        //formattage des données
+        if(typeof row.info_meta !== 'undefined' && typeof row.info_meta.season !== 'undefined' && typeof row.info_meta.episode !== 'undefined'){
+          row.season_episode = "S"+row.info_meta.season.toString().replace(/^(\d)$/,'0$1')+"E"+row.info_meta.episode.toString().replace(/^(\d)$/,'0$1');
+        }
 
         data.push(row);
     },
