@@ -21,7 +21,7 @@ INSTALLATION
 
     npm install
 
-  modifier le fichier config.js, pour le chemin de database (attention il faut doubler les \ et proteger les espaces )
+  modifier le fichier config.js, pour y mettre le chemin de la base de données plex (attention il faut doubler les anti-slash et proteger les espaces )
 
   exemple: C:\\Users\\yourUsername\\AppData\\Local\\Plex\ Media\ Server\\Plug-in\ Support\\Databases\\com.plexapp.plugins.library.db
 
@@ -34,7 +34,7 @@ INSTALLATION
 
   pré requis, nodejs
 
-  sinon installer homebrew (
+  sinon installer homebrew
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -48,7 +48,7 @@ INSTALLATION
 
     npm install
 
-  modifier le fichier config.js, pour le chemin de database
+  modifier le fichier config.js, pour y mettre le chemin de la base de données plex
 
   exemple: /Users/yourUsername/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db
 
@@ -73,7 +73,7 @@ INSTALLATION
 
     npm install
 
-  modifier le fichier config.js, pour le chemin de database
+  modifier le fichier config.js, pour y mettre le chemin de la base de données plex
 
   exemple: /home/yourUsername/plex-config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db
 
