@@ -9,13 +9,13 @@ INSTALLATION
 Sur Windows
   pré requis, installer git ( https://git-scm.com/download/win )
   pré requis, installer nodejs 0.12.x ( https://nodejs.org/dist/v0.12.7/ )
-  ouvrir cmb, se deplacer dans un repertoire où vous voulez installer
-  git clone https://github.com/TwanoO67/plex-web-downloader.git
-  cd plex-web-downloader
-  npm install
+  ouvrir l'invite de commande 'cmb', puis se deplacer dans un repertoire où vous voulez installer
+  taper: git clone https://github.com/TwanoO67/plex-web-downloader.git
+  taper: cd plex-web-downloader
+  taper: npm install
   modifier le fichier config.js, pour le chemin de database (attention il faut doubler les \ et proteger les espaces )
-    exemple: C:\\Users\\yourUsername\\AppData\\Local\\Plex Media Server\\Plug-in\ Support\\Databases\\com.plexapp.plugins.library.db
-  npm start
+    exemple: C:\\Users\\yourUsername\\AppData\\Local\\Plex\ Media\ Server\\Plug-in\ Support\\Databases\\com.plexapp.plugins.library.db
+  taper: npm start
   puis ouvrir http://localhost:3000
 
 Sous mac
