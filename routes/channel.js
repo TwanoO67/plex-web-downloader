@@ -68,12 +68,6 @@ router.get('/:id', function(req, res, next) {
         });
         row.info_meta = params;
 
-        //formattage des données
-        var tab = row.file.split('/');
-        var tab2 = tab[tab.length -1].split('\\');
-        var filename = tab2[tab2.length -1];
-        row.filename = filename;
-
         if(typeof row.info_meta !== 'undefined' && typeof row.info_meta.season !== 'undefined' && typeof row.info_meta.episode !== 'undefined'){
           row.season_episode = "S"+addZero(row.info_meta.season)+"E"+addZero(row.info_meta.episode);
         }
