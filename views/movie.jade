@@ -9,8 +9,8 @@ block content
   label Télécharger
   br
   each file, i in movie.file
-    file.size
-    a(href="/file/#{file.id}/#{file.filename}")= file.filename
+    a(href="/file/#{file.id}/#{file.filename}")
+      #{file.size} #{file.filename} 
     br
 
   label Résumé

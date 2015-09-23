@@ -41,7 +41,7 @@ router.get('/:id', function(req, res, next) {
     db.each("SELECT i.id as id, i.title as title, i.duration as second, i.year as year"
     + " FROM metadata_items i, media_items t "
     + " WHERE i.id = t.metadata_item_id AND i.title != '' AND t.library_section_id = ? "
-    + " ORDER BY i.title ASC",req.params.id, function(err, row) {
+    + " GROUP BY i.id",req.params.id, function(err, row) {
 
         row.duree = formatDuree(row.second);
 
