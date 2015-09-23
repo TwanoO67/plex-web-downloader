@@ -23,22 +23,6 @@ router.get('/:id', function(req, res, next) {
     }
   }
 
-  function humanFileSize(bytes, si) {
-    var thresh = si ? 1000 : 1024;
-    if(Math.abs(bytes) < thresh) {
-        return bytes + ' B';
-    }
-    var units = si
-        ? ['kB','MB','GB','TB','PB','EB','ZB','YB']
-        : ['KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB'];
-    var u = -1;
-    do {
-        bytes /= thresh;
-        ++u;
-    } while(Math.abs(bytes) >= thresh && u < units.length - 1);
-    return bytes.toFixed(1)+' '+units[u];
-  }
-
   //on fais toute les opération de base a la suite
   db.serialize(function() {
 
@@ -59,21 +43,7 @@ router.get('/:id', function(req, res, next) {
     + " WHERE i.id = t.metadata_item_id AND i.title != '' AND t.library_section_id = ? "
     + " ORDER BY i.title ASC",req.params.id, function(err, row) {
 
-        //découpage des hints
-        var params = {};
-        var tab = row.hints.split('&');
-        tab.forEach(function(val,index,table){
-          var tab2 = val.split('=');
-          params[tab2[0]] = decodeURIComponent(tab2[1]);
-        });
-        row.info_meta = params;
-
-        if(typeof row.info_meta !== 'undefined' && typeof row.info_meta.season !== 'undefined' && typeof row.info_meta.episode !== 'undefined'){
-          row.season_episode = "S"+addZero(row.info_meta.season)+"E"+addZero(row.info_meta.episode);
-        }
-
         row.duree = formatDuree(row.second);
-        row.size = humanFileSize(row.size,true);
 
         data.push(row);
     },
