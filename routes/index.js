@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
     //}
     //stmt.finalize();
 
-    db.each("SELECT id, name"
+    db.each("SELECT id, name, section_type as type"
     + " FROM library_sections ORDER BY name ASC", function(err, row) {
       data.push(row);
     },
