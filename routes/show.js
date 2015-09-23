@@ -23,7 +23,7 @@ router.get('/:id', function(req, res, next) {
 
     db.each("SELECT i.id as id, i.title as title, t.hints as hints, p.file as file, i.duration as second, t.size as size, i.year as year"
     + " FROM media_items t, metadata_items i, media_parts p "
-    + " WHERE p.media_item_id=t.id AND t.metadata_item_id = i.id AND i.title != '' AND t.hints LIKE '%show=?%' "
+    + " WHERE t.id=p.media_item_id AND t.metadata_item_id = i.id AND t.hints LIKE '%show=?%' "
     ,id, function(err, row) {
         console.log(err);
         console.log(row);
@@ -53,8 +53,8 @@ router.get('/:id', function(req, res, next) {
     },
     //aprés toute les opération de la base
     function() {
-        res.render('channel', { title: 'Liste des vidéos',channel:{
-          'name': "Liste de la série",
+        res.render('channel', { title: 'Episode de :'+id,channel:{
+          'name': 'Episode de :'+id,
           'type': 2
         },videos: data });
     });
