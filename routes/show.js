@@ -1,6 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
+function formatDuree(time) {
+  if(typeof time !== 'undefined' && time != "" && time > 0){
+    var d = new Date(time); // js fonctionne en milisecondes
+    return addZero(d.getHours()-1) + "h "+ addZero(d.getMinutes()) + "m "+ addZero(d.getSeconds()) + "s ";
+  }
+  else {
+    return "";
+  }
+}
+
+function addZero(v) {
+  return v.toString().replace(/^(\d)$/,'0$1');
+};
+
 /* GET home page. */
 router.get('/:id', function(req, res, next) {
   var config = require('../config');
@@ -10,10 +24,10 @@ router.get('/:id', function(req, res, next) {
   //on fais toute les opération de base a la suite
   db.serialize(function() {
 
-    db.each("SELECT i.id as id, i.title as title, t.hints as hints, i.duration as second, t.size as size, i.year as year"
+    db.each("SELECT i.id as id, i.title as title, t.hints as hints, i.duration as second, i.year as year"
     + " FROM media_items t, metadata_items i "
     + " WHERE t.metadata_item_id = i.id AND t.hints = '%?%' "
-    + " ORDER BY i.title ASC",req.params.id, function(err, row) {
+    + " GROUP BY i.id",req.params.id, function(err, row) {
         console.log(err);
         console.log(row);
         //découpage des hints
@@ -25,24 +39,17 @@ router.get('/:id', function(req, res, next) {
         });
         row.info_meta = params;
 
-        //formattage des données
-        var tab = row.file.split('/');
-        var tab2 = tab[tab.length -1].split('\\');
-        var filename = tab2[tab2.length -1];
-        row.filename = filename;
-
         if(typeof row.info_meta !== 'undefined' && typeof row.info_meta.season !== 'undefined' && typeof row.info_meta.episode !== 'undefined'){
           row.season_episode = "S"+addZero(row.info_meta.season)+"E"+addZero(row.info_meta.episode);
         }
 
         row.duree = formatDuree(row.second);
-        row.size = humanFileSize(row.size,true);
 
         data.push(row);
     },
     //aprés toute les opération de la base
     function() {
-        res.render('channel',{
+        res.render('show',{
           title: 'Episode de '+req.params.id,
           channel: {
             'name': 'Episode de '+req.params.id,
