@@ -32,7 +32,7 @@ router.get('/:id', function(req, res, next) {
         };
 
         if(row.year != '' && row.year != null)
-          show[id].year = row.year;
+          shows[id].year = row.year;
     },
     //aprés toute les opération de la base
     function(){
