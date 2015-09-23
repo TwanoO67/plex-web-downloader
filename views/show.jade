@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1= channel.name
+
+  table(id="example", class="table table-striped table-bordered", cellspacing="0", width="100%")
+    thead
+      tr
+        th Nom
+        th Série
+        th Saison & Episode
+        th Durée
+        th Année
+        th Taille
+    tbody
+      each video, i in videos
+        tr
+          td
+            a(href="/movie/#{video.id}")= video.title
+          td
+            if(typeof video.info_meta !== 'undefined' && typeof video.info_meta.show !== 'undefined')
+            | #{video.info_meta.show}
+          td
+            if(typeof video.season_episode !== 'undefined')
+            | #{video.season_episode}
+          td= video.duree
+          td= video.year
+          td= video.size
+      script.
+        $(document).ready(function() {
+          $('#example').DataTable({
+              "language": {
+                  "url": "//cdn.datatables.net/plug-ins/1.10.8/i18n/French.json"
+              }
+            });
+        });
