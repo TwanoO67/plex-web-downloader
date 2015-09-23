@@ -15,13 +15,11 @@ router.get('/:id', function(req, res, next) {
   var db = config.init_db();
   var shows = {};
 
-  var id = atob(req.params.id);
+  var id = /*atob(*/req.params.id/*)*/;
   console.log(id);
 
   //on fais toute les opération de base a la suite
   db.serialize(function() {
-
-
 
     db.each("SELECT i.id as id, i.title as title, t.hints as hints, p.file as file, i.duration as second, t.size as size, i.year as year"
     + " FROM media_items t, metadata_items i, media_parts p "

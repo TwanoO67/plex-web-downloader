@@ -1,14 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-function btoa(string){
-  return new Buffer(string).toString('base64');
-}
-
-function atob(string){
-  return new Buffer(string, 'base64').toString('ascii');
-}
-
 /* GET home page. */
 router.get('/:id', function(req, res, next) {
   var config = require('../config');
@@ -33,17 +25,17 @@ router.get('/:id', function(req, res, next) {
         });
         row.info_meta = params;
 
-        var id = btoa(row.id);
+        var id = params.show;
         shows[id] = {
           'nom': params.show,
           'id': id
         };
-        
+
         if(row.year != '' && row.year != null)
           show[id].year = row.year;
     },
     //aprés toute les opération de la base
-    function() {
+    function(){
         console.log(shows);
         res.render('show_list', { title: 'Liste des séries',shows: shows });
     });
