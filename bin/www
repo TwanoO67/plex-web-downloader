@@ -18,6 +18,7 @@
        // Replace the dead worker, we're not sentimental
        console.log('Worker ' + worker.id + ' died :(');
        cluster.fork();
+       console.log('Remplacement du worker ');
    });
 
  // Code to run if we're in a worker process
