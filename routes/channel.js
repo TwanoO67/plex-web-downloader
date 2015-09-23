@@ -54,7 +54,7 @@ router.get('/:id', function(req, res, next) {
       channel_info = row;
     });
 
-    db.each("SELECT i.id as id, i.title as title, t.hints as hints i.duration as second, t.size as size, i.year as year"
+    db.each("SELECT i.id as id, i.title as title, t.hints as hints, i.duration as second, t.size as size, i.year as year"
     + " FROM media_items t, metadata_items i "
     + " WHERE t.metadata_item_id = i.id AND i.title != '' AND t.library_section_id = ? "
     + " ORDER BY i.title ASC",req.params.id, function(err, row) {

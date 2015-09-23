@@ -10,9 +10,9 @@ router.get('/:id', function(req, res, next) {
   //on fais toute les opération de base a la suite
   db.serialize(function() {
 
-    db.each("SELECT i.id as id, i.title as title, t.hints as hints, p.file as file, i.duration as second, t.size as size, i.year as year"
-    + " FROM media_items t, metadata_items i, media_parts p "
-    + " WHERE p.media_item_id=t.id AND t.metadata_item_id = i.id AND t.hints = '%Walkin%' "
+    db.each("SELECT i.id as id, i.title as title, t.hints as hints, i.duration as second, t.size as size, i.year as year"
+    + " FROM media_items t, metadata_items i "
+    + " WHERE t.metadata_item_id = i.id AND t.hints = '%?%' "
     + " ORDER BY i.title ASC",req.params.id, function(err, row) {
         console.log(err);
         console.log(row);
