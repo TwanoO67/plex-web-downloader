@@ -20,13 +20,21 @@ router.get('/:id', function(req, res, next) {
   var config = require('../config');
   var db = config.init_db();
   var data = [];
+  var show;
 
   //on fais toute les opération de base a la suite
   db.serialize(function() {
 
-    db.each("SELECT i.id as id, i.title as title, i.duration as second, i.year as year"
-    + " FROM metadata_items i "
-    + " WHERE t.metadata_item_id = i.id AND i.parent_id = ? ",req.params.id, function(err, row) {
+    db.get("SELECT id, title, year"
+    + " FROM metadata_items "
+    + " WHERE id = ? "
+    ,req.params.id, function(err, row) {
+      shows = row;
+    });
+
+    db.each("SELECT episode.id as , episode.title as titre, episode.'index' as episode, season.'index' as saison "+
+    "FROM metadata_items episode,metadata_items season,metadata_items show "+
+    "WHERE episode.parent_id=season.id AND season.parent_id = show.id AND show.id = ? ",req.params.id, function(err, row) {
         console.log(err);
         console.log(row);
         /*//découpage des hints
@@ -40,20 +48,17 @@ router.get('/:id', function(req, res, next) {
 
         if(typeof row.info_meta !== 'undefined' && typeof row.info_meta.season !== 'undefined' && typeof row.info_meta.episode !== 'undefined'){
           row.season_episode = "S"+addZero(row.info_meta.season)+"E"+addZero(row.info_meta.episode);
-        }*/
+        }
 
-        row.duree = formatDuree(row.second);
+        row.duree = formatDuree(row.second);*/
 
         data.push(row);
     },
     //aprés toute les opération de la base
     function() {
         res.render('show',{
-          title: 'Episode de '+req.params.id,
-          channel: {
-            'name': 'Episode de '+req.params.id,
-            'type': 2
-          },
+          title: 'Episode de '+show.title,
+          show: show,
           videos: data
         });
     });
