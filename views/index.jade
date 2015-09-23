@@ -6,4 +6,7 @@ block content
   ul
     each channel, i in channels
       li
-        a(href="/channel/#{channel.id}")= channel.name
+        if(channel.type == 2)
+          a(href="/channel/#{channel.id}")= channel.name
+        else
+          a(href="/show_list/#{channel.id}")= channel.name

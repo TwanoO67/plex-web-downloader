@@ -29,6 +29,8 @@ app.use('/users', require('./routes/users'));
 app.use('/file', require('./routes/file'));
 app.use('/channel', require('./routes/channel'));
 app.use('/movie', require('./routes/movie'));
+app.use('/show_list', require('./routes/show_list'));
+app.use('/show', require('./routes/show'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

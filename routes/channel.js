@@ -56,7 +56,7 @@ router.get('/:id', function(req, res, next) {
 console.log("test2")
     db.each("SELECT i.id as id, i.title as title, t.hints as hints, p.file as file, i.duration as second, t.size as size, i.year as year"
     + " FROM media_items t, metadata_items i, media_parts p "
-    + " WHERE p.media_item_id=i.id AND t.metadata_item_id = i.id AND i.title != '' AND t.library_section_id = ? "
+    + " WHERE p.media_item_id=t.id AND t.metadata_item_id = i.id AND i.title != '' AND t.library_section_id = ? "
     + " ORDER BY i.title ASC",req.params.id, function(err, row) {
 
         //découpage des hints
