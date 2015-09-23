@@ -13,7 +13,7 @@ function atob(string){
 router.get('/:id', function(req, res, next) {
   var config = require('../config');
   var db = config.init_db();
-  var shows = {};
+  var data = [];
 
   var id = /*atob(*/req.params.id/*)*/;
   console.log(id);
