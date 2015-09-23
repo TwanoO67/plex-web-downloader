@@ -7,7 +7,9 @@ block content
   p= movie.rating
 
   label Télécharger
+  br
   each file, i in movie.file
+    file.size
     a(href="/file/#{file.id}/#{file.filename}")= file.filename
     br
 

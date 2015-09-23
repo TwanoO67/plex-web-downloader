@@ -7,39 +7,20 @@ block content
     thead
       tr
         th Nom
-        if(channel.type == 2)
-          th Série
-          th Saison & Episode
         th Durée
         th Année
-        th Taille
     tbody
       each video, i in videos
         tr
           td
             a(href="/movie/#{video.id}")= video.title
-          if(channel.type == 2)
-            td
-              if(typeof video.info_meta !== 'undefined' && typeof video.info_meta.show !== 'undefined')
-              | #{video.info_meta.show}
-            td
-              if(typeof video.season_episode !== 'undefined')
-              | #{video.season_episode}
           td= video.duree
           td= video.year
-          td= video.size
       script.
         $(document).ready(function() {
           $('#example').DataTable({
               "language": {
                   "url": "//cdn.datatables.net/plug-ins/1.10.8/i18n/French.json"
-              }/*,
-              "columnDefs": [
-                { "targets": 2,
-                  "searchable": false,
-                  "orderable": false,
-                }
-              ]*/
-              //"dom": '<"toolbar">frtip'
+              }
             });
         });
