@@ -14,7 +14,7 @@ router.get('/:id/:filename', function (req, res, next) {
   //}
   //stmt.finalize();
 
-  db.get("SELECT file FROM media_parts WHERE media_item_id = ?",req.params.id, function(err, row) {
+  db.get("SELECT file FROM media_parts WHERE id = ?",req.params.id, function(err, row) {
 
       var options = {
         //root: /*__dirname +*/ '/public/',

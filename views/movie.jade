@@ -7,8 +7,9 @@ block content
   p= movie.rating
 
   label Télécharger
-  a(href="/file/#{movie.id}/#{movie.title}")= movie.title
-  br
+  each file, i in movie.file
+    a(href="/file/#{file.id}/#{file.filename}")= file.filename
+    br
 
   label Résumé
   p= movie.summary
