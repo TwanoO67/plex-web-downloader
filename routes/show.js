@@ -24,13 +24,12 @@ router.get('/:id', function(req, res, next) {
   //on fais toute les opération de base a la suite
   db.serialize(function() {
 
-    db.each("SELECT i.id as id, i.title as title, t.hints as hints, i.duration as second, i.year as year"
-    + " FROM media_items t, metadata_items i "
-    + " WHERE t.metadata_item_id = i.id AND t.hints = '%?%' "
-    + " GROUP BY i.id",req.params.id, function(err, row) {
+    db.each("SELECT i.id as id, i.title as title, i.duration as second, i.year as year"
+    + " FROM metadata_items i "
+    + " WHERE t.metadata_item_id = i.id AND i.parent_id = ? ",req.params.id, function(err, row) {
         console.log(err);
         console.log(row);
-        //découpage des hints
+        /*//découpage des hints
         var params = {};
         var tab = row.hints.split('&');
         tab.forEach(function(val,index,table){
@@ -41,7 +40,7 @@ router.get('/:id', function(req, res, next) {
 
         if(typeof row.info_meta !== 'undefined' && typeof row.info_meta.season !== 'undefined' && typeof row.info_meta.episode !== 'undefined'){
           row.season_episode = "S"+addZero(row.info_meta.season)+"E"+addZero(row.info_meta.episode);
-        }
+        }*/
 
         row.duree = formatDuree(row.second);
 
