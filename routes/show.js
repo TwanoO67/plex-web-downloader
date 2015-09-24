@@ -32,11 +32,10 @@ router.get('/:id', function(req, res, next) {
       shows = row;
     });
 
-    db.each("SELECT episode.id as id, episode.title as titre, episode.[index] as episode, season.[index] as saison "+
+    db.each("SELECT episode.id as id, episode.title as titre, episode.[index] as episode, episode.duration as second, season.[index] as saison "+
     "FROM metadata_items episode,metadata_items season,metadata_items show "+
     "WHERE episode.parent_id=season.id AND season.parent_id = show.id AND show.id = ? ",req.params.id, function(err, row) {
-        console.log(err);
-        console.log(row);
+
         /*//découpage des hints
         var params = {};
         var tab = row.hints.split('&');
@@ -45,29 +44,33 @@ router.get('/:id', function(req, res, next) {
           params[tab2[0]] = decodeURIComponent(tab2[1]);
         });
         row.info_meta = params;
+        */
 
-        if(typeof row.info_meta !== 'undefined' && typeof row.info_meta.season !== 'undefined' && typeof row.info_meta.episode !== 'undefined'){
-          row.season_episode = "S"+addZero(row.info_meta.season)+"E"+addZero(row.info_meta.episode);
+        if(typeof row.episode !== '' &&  row.saison !== '' ){
+          row.season_episode = "S"+addZero(row.saison)+"E"+addZero(row.episode );
         }
 
-        row.duree = formatDuree(row.second);*/
+        row.duree = formatDuree(row.second);
 
         data.push(row);
     },
-    //aprés toute les opération de la base
+
     function() {
+      //a la fin du foreach
+    });
+
+
+  },function(){
+      //aprés toute les opération de la base
       var titre = "Série inexistante";
       if(show != null){
         title = 'Episode de '+show.title;
       }
-        res.render('show',{
-          title: titre,
-          show: show,
-          videos: data
-        });
-    });
-
-
+      res.render('show',{
+        title: titre,
+        show: show,
+        videos: data
+      });
   });
 
   db.close();

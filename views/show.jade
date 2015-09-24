@@ -7,19 +7,15 @@ block content
     thead
       tr
         th Nom
-        th Saison
-        th Episode
+        th Saison & Episode
         th Durée
-        th Année
     tbody
       each video, i in videos
         tr
           td
             a(href="/movie/#{video.id}")= video.titre
-          td= video.saison
-          td= video.episode
+          td= video.season_episode
           td= video.duree
-          td= video.year
       script.
         $(document).ready(function() {
           $('#example').DataTable({
