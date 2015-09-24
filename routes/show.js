@@ -54,26 +54,27 @@ router.get('/:id', function(req, res, next) {
 
         data.push(row);
     },
-
     function() {
       //a la fin du foreach
     });
 
+    db.close(function(){
+        //aprés toute les opération de la base
+        var titre = "Série inexistante";
+        if(show != null){
+          title = 'Episode de '+show.title;
+        }
+        res.render('show',{
+          title: titre,
+          show: show,
+          videos: data
+        });
+    });
 
-  },function(){
-      //aprés toute les opération de la base
-      var titre = "Série inexistante";
-      if(show != null){
-        title = 'Episode de '+show.title;
-      }
-      res.render('show',{
-        title: titre,
-        show: show,
-        videos: data
-      });
+
   });
 
-  db.close();
+
 });
 
 module.exports = router;
