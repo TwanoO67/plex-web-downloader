@@ -54,7 +54,7 @@ router.get('/:id', function(req, res, next) {
         //aprés toute les opération de la base
         var titre = "Série inexistante";
         if(data.length > 0){
-          title = 'Episode de '+data[0].serie;
+          titre = 'Episode de '+data[0].serie;
         }
         res.render('show',{
           title: titre,
