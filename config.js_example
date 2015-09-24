@@ -18,6 +18,8 @@ Docker
 module.exports = {
     database: "/home/antoine/plex-config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db",
 
+    presentation: "<h1>Bienvenue sur mon serveur</h1><p>Merci de respecter mon upload...</p>",
+
 
     init_db: function(){
       var sqlite3 = require('sqlite3').verbose();

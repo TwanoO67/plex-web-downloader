@@ -1,6 +1,10 @@
 extends layout
 
 block content
+
+  if(presentation != '')
+    !{presentation}
+
   h1= title
 
   ul
