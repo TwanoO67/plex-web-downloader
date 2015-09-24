@@ -20,7 +20,7 @@ router.get('/:id', function(req, res, next) {
   var config = require('../config');
   var db = config.init_db();
   var data = [];
-  var show;
+  var show = null;
 
   //on fais toute les opération de base a la suite
   db.serialize(function() {
@@ -56,8 +56,12 @@ router.get('/:id', function(req, res, next) {
     },
     //aprés toute les opération de la base
     function() {
+      var titre = "Série inexistante";
+      if(show != null){
+        title = 'Episode de '+show.title;
+      }
         res.render('show',{
-          title: 'Episode de '+show.title,
+          title: titre,
           show: show,
           videos: data
         });
