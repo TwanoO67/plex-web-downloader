@@ -130,5 +130,4 @@ TODO Liste
 * Faire une page spéciales pour les séries
 * Gérer les téléchargements multi-source en proposant un lien aria2 (voir aria2.sourceforge.net)
 * Intégré web ui: http://ziahamza.github.io/webui-aria2/
-* Clusterisé avec un fork par cpu
 * Mettre en place une limite d'upload activable à la demande
