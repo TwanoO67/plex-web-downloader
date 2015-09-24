@@ -20,19 +20,11 @@ router.get('/:id', function(req, res, next) {
   var config = require('../config');
   var db = config.init_db();
   var data = [];
-  var show = null;
 
   //on fais toute les opération de base a la suite
   db.serialize(function() {
 
-    db.get("SELECT id, title, year"
-    + " FROM metadata_items "
-    + " WHERE id = ? "
-    ,req.params.id, function(err, row) {
-      shows = row;
-    });
-
-    db.each("SELECT episode.id as id, episode.title as titre, episode.[index] as episode, episode.duration as second, season.[index] as saison "+
+    db.each("SELECT episode.id as id, episode.title as titre, episode.[index] as episode, episode.duration as second, season.[index] as saison, show.title as serie "+
     "FROM metadata_items episode,metadata_items season,metadata_items show "+
     "WHERE episode.parent_id=season.id AND season.parent_id = show.id AND show.id = ? ",req.params.id, function(err, row) {
 
@@ -61,12 +53,11 @@ router.get('/:id', function(req, res, next) {
     db.close(function(){
         //aprés toute les opération de la base
         var titre = "Série inexistante";
-        if(show != null){
-          title = 'Episode de '+show.title;
+        if(data.length > 0){
+          title = 'Episode de '+data.0.serie;
         }
         res.render('show',{
           title: titre,
-          show: show,
           videos: data
         });
     });
