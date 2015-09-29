@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var config = require('../config');
+  var config = res.locals.config;//require('../config');
   var db = config.init_db();
 
   var data = [];

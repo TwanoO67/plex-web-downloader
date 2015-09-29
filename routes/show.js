@@ -17,7 +17,7 @@ function addZero(v) {
 
 /* GET home page. */
 router.get('/:id', function(req, res, next) {
-  var config = require('../config');
+  var config = res.locals.config;
   var db = config.init_db();
   var data = [];
 

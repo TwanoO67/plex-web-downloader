@@ -4,11 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-/*var routes = require('./routes/index');
-var users = require('./routes/users');
-var file = require('./routes/file');
-var channel = require('./routes/channel');*/
+var config = require('./config');
 
 var app = express();
 
@@ -16,13 +12,38 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//protection par mot de passe
+if( typeof config.auth_user !== 'undefined' && typeof config.auth_password !== 'undefined' ){
+  console.log("SAFE MODE: votre serveur est protégé par mot de passe.");
+  var basicAuth = require('basic-auth');
+  app.use(function(req, res, next) {
+    var user = basicAuth(req);
+    if (!user || user.name !== config.auth_user || user.pass !== config.auth_password) {
+      res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+      return res.sendStatus(401);
+    }
+    else{
+      next();
+    }
+  });
+}
+else{
+  console.log("UNSAFE MODE: configurez un auth_user et auth_password dans le fichier config.js");
+}
+
+//envoyer config a tout le monde
+app.use(function(req, res, next) {
+  res.locals.config = config;
+  next();
+});
+
+app.use(favicon(path.join(__dirname, 'public', 'iconarchive_plex.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));

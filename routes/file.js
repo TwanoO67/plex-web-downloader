@@ -3,8 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/:id/:filename', function (req, res, next) {
-
-  var config = require('../config');
+  var config = res.locals.config;
   var db = config.init_db();
 
   //db.run("CREATE TABLE if not exists user_info (info TEXT)");
