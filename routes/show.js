@@ -59,7 +59,8 @@ router.get('/:id/:incoming_chan', function(req, res, next) {
         res.render('show',{
           title: titre,
           videos: data,
-          channel_id: req.params.incoming_chan
+          channel_id: req.params.incoming_chan,
+          show_id: req.params.id
         });
     });
 
