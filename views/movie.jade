@@ -3,10 +3,10 @@ extends layout
 block content
   h1= movie.title
 
-  a(href="/channel/#{channel_id}") Retour à la liste
+  a(href="#",onclick="window.history.back();") Retour à la liste
   br
   br
-  
+
   label Note
   p= movie.rating
 
