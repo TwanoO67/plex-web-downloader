@@ -18,7 +18,7 @@ function humanFileSize(bytes, si) {
 }
 
 /* GET home page. */
-router.get('/:id', function(req, res, next) {
+router.get('/:id/:incoming_chan', function(req, res, next) {
   var config = res.locals.config;
   var db = config.init_db();
 
@@ -41,7 +41,7 @@ router.get('/:id', function(req, res, next) {
 
       row.file.push(ligne);
     },function(){
-      res.render('movie', { title: 'Détail vidéo',movie: row });
+      res.render('movie', { title: 'Détail vidéo',movie: row,channel_id: req.params.incoming_chan });
     });
 
   });

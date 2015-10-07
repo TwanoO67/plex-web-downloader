@@ -3,26 +3,30 @@ extends layout
 block content
   h1= movie.title
 
+  a(href="/channel/#{channel_id}") Retour à la liste
+  br
+  br
+  
   label Note
   p= movie.rating
 
   label Télécharger
   br
   each file, i in movie.file
-    a(href="/file/#{file.id}/#{file.filename}") #{file.size} #{file.filename} 
+    a(href="/file/#{file.id}/#{file.filename}") #{file.size} #{file.filename}
     br
-
+  br
   label Résumé
   p= movie.summary
   br
-
+  br
   label Genre
   each tag, i in movie.tags_genre
     if(tag!='')
       span= tag
       | &nbsp;
   br
-
+  br
   label Acteurs
   each tag, i in movie.tags_star
     if(tag!='')
