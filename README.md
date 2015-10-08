@@ -125,9 +125,9 @@ COMPILATION
 
 TODO Liste
 --------------------
-* Ajouter une présentation sur l'index, configurable dans config.js
 * Gérer les images des vignettes
-* Faire une page spéciales pour les séries
+* Intégrer dans un logiciel avec system-tray pour start/stop le serveur
+* Mutualisé les sources avec un mirroir centralisé
 * Gérer les téléchargements multi-source en proposant un lien aria2 (voir aria2.sourceforge.net)
 * Intégré web ui: http://ziahamza.github.io/webui-aria2/
 * Mettre en place une limite d'upload activable à la demande
