@@ -17,7 +17,7 @@ block content
       each video, i in videos
         tr
           td
-            a(href="/movie/#{video.id}/#{channel_id}")= video.titre
+            a(href="/movie/#{video.id}")= video.titre
           td= video.season_episode
           td= video.duree
       script.
