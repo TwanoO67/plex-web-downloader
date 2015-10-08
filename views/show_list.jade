@@ -12,7 +12,7 @@ block content
       each show, i in shows
         tr
           td
-            a(href="/show/#{show.id}")= show.title
+            a(href="/show/#{show.id}/#{channel_id}")= show.title
           td= show.year
       script.
         $(document).ready(function() {
