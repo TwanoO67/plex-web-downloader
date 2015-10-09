@@ -4,12 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var config = require('./config');
+var config = require('../config');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'jade');
 
 //protection par mot de passe
@@ -37,22 +37,22 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(favicon(path.join(__dirname, 'public', 'iconarchive_plex.ico')));
+app.use(favicon(path.join(__dirname, '../public', 'iconarchive_plex.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 
-app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
-app.use('/file', require('./routes/file'));
-app.use('/channel', require('./routes/channel'));
-app.use('/movie', require('./routes/movie'));
-app.use('/show_list', require('./routes/show_list'));
-app.use('/show', require('./routes/show'));
-app.use('/divers', require('./routes/divers'));
+app.use('/', require('../routes/index'));
+app.use('/users', require('../routes/users'));
+app.use('/file', require('../routes/file'));
+app.use('/channel', require('../routes/channel'));
+app.use('/movie', require('../routes/movie'));
+app.use('/show_list', require('../routes/show_list'));
+app.use('/show', require('../routes/show'));
+app.use('/divers', require('../routes/divers'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
