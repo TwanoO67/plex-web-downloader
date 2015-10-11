@@ -11,6 +11,12 @@
       	console.log(stdout);
       });
     }
+
+    function proper_quit(){
+      gui.App.closeAllWindows();
+      global.main_server.kill();
+      gui.App.quit();
+    }
   </script>
   <style>
     body, html {
@@ -94,7 +100,7 @@
       <h4>Plex Web Downloader</h4>
       <p><button onclick="win.hide();">Minimiser le Menu</button></p>
       <p><button onclick="open_conf();">Ouvrir la configuration</button></p>
-      <p><button onclick="gui.App.closeAllWindows();">Arreter le Serveur</button></p>
+      <p><button onclick="proper_quit();">Arreter le Serveur</button></p>
     </section>
   </body>
 </html>

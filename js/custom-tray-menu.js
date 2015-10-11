@@ -26,7 +26,6 @@ class CustomTrayMenu {
     this.tray.remove();
     this.tray = null;
     this.trayMenu.close();
-    process.emit('log', 'Remove tray icon');
   }
 
   _initTray() {
@@ -37,7 +36,6 @@ class CustomTrayMenu {
       tooltip: window.document.title,
       iconsAreTemplates: false
     });
-    process.emit('log', 'Add tray icon');
   }
 
   _initMenuWindow() {
@@ -57,13 +55,13 @@ class CustomTrayMenu {
     // add class to new window's body to apply platform specific css
     this.trayMenu.on('document-end', function() {
       this.trayMenu.window.document.body.className += ' ' + process.platform;
-      process.emit('log', "Adding class " + process.platform);
+      //console.log("Adding class " + process.platform);
     }.bind(this));
 
     this.trayMenu.on('blur', function () {
       this.trayMenu.hide();
       this.shown = false;
-      process.emit('log', 'Hide custom menu');
+      //console.log('Hide custom menu');
     }.bind(this));
 
   }
@@ -81,13 +79,13 @@ class CustomTrayMenu {
       this.trayMenu.show();
       //this.trayMenu.focus();
       this.shown = true;
-      process.emit('log', 'Show custom menu');
+      //console.log('Show custom menu');
     //}
   }
 
   // calculdate position for window to appear
   translate(pos) {
-    process.emit('log', "Click position: " + util.inspect(pos));
+    //console.log("Click position: " + util.inspect(pos));
     if (process.platform == 'darwin') {
       pos.x -= Math.floor(this.trayMenu.width / 2 - this.iconWidth);
     } else {
