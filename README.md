@@ -11,7 +11,7 @@ INSTALLATION
 
   pré requis, installer git ( https://git-scm.com/download/win )
 
-  pré requis, installer nodejs 0.12.x ( https://nodejs.org/dist/v0.12.7/ )
+  pré requis, installer nodewebkit (http://dl.nwjs.io/v0.12.3/nwjs-v0.12.3-win-ia32.zip)
 
   ouvrir l'invite de commande 'cmb', puis se deplacer dans un repertoire où vous voulez installer
 
@@ -32,15 +32,7 @@ INSTALLATION
 
 **Sous MacOS**
 
-  pré requis, nodejs
-
-  sinon installer homebrew
-
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  et :
-
-    brew install node
+  pré requis, nodewebkit ( http://dl.nwjs.io/v0.12.3/nwjs-v0.12.3-osx-ia32.zip )
 
     git clone https://github.com/TwanoO67/plex-web-downloader.git
 
@@ -57,29 +49,7 @@ INSTALLATION
   puis ouvrir dans votre navigateur l'adresse http://localhost:3000
 
 
-**Sous Ubuntu**
 
-  pré requis nodejs, ou
-
-    apt-get install nodejs
-
-    ln -s /usr/bin/nodejs /usr/local/bin/node
-
-  puis, se déplacer dans votre repertoire pour l'install et :
-
-    git clone https://github.com/TwanoO67/plex-web-downloader.git
-
-    cd plex-web-downloader
-
-    npm install
-
-  modifier le fichier config.js, pour y mettre le chemin de la base de données plex
-
-  exemple: /home/yourUsername/plex-config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db
-
-    npm start
-
-  puis ouvrir dans votre navigateur l'adresse http://localhost:3000
 
 
 
