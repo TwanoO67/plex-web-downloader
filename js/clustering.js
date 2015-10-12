@@ -8,16 +8,16 @@ if (cluster.isMaster) {
 
   // Create a worker for each CPU
   for (var i = 0; i < cpuCount; i += 1) {
-     console.log('Création du fork ' + i);
+     //console.log('Création du fork ' + i);
      cluster.fork();
   }
+  console.log('Création de '+cpuCount+' thread');
 
   // Listen for dying workers
   cluster.on('exit', function (worker) {
       // Replace the dead worker, we're not sentimental
-      console.log('Worker ' + worker.id + ' died :(');
       cluster.fork();
-      console.log('Remplacement du worker ');
+      console.log('Remplacement du worker ' + worker.id);
   });
 
 // Code to run if we're in a worker process

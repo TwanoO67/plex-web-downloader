@@ -14,7 +14,7 @@ app.set('view engine', 'jade');
 
 //protection par mot de passe
 if( typeof config.auth_user !== 'undefined' && typeof config.auth_password !== 'undefined' ){
-  console.log("SAFE MODE: votre serveur est protégé par mot de passe.");
+  //console.log("SAFE MODE: votre serveur est protégé par mot de passe.");
   var basicAuth = require('basic-auth');
   app.use(function(req, res, next) {
     var user = basicAuth(req);
@@ -27,9 +27,9 @@ if( typeof config.auth_user !== 'undefined' && typeof config.auth_password !== '
     }
   });
 }
-else{
+/*else{
   console.log("UNSAFE MODE: configurez un auth_user et auth_password dans le fichier config.js");
-}
+}*/
 
 //envoyer config a tout le monde
 app.use(function(req, res, next) {

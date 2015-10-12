@@ -7,6 +7,13 @@ Ce projet permet de créer une liste de vos fichiers vidéo plex et de les parta
 INSTALLATION
 --------------------
 
+  il existe des version packagé pour window et mac, où vous n'avez plus qu'à éditer votre configuration avant de lancer le serveur
+
+  voir ici:
+
+
+  INSTALLATION MANUELLE
+  --------------------
 **Sur Windows**
 
   pré requis, installer git ( https://git-scm.com/download/win )
@@ -85,18 +92,20 @@ DEVELOPPEMENT
 puis configurer vos chaines sur: http://localhost:32400/web/index.html
 
 
-COMPILATION
+PACKAGING
 --------------------
+    voir ici: https://github.com/nwjs/nw.js/wiki/Using-Node-modules
 
-    npm install enclose -g
+    sudo npm install
 
-      enclose -o bin/mac_bin --loglevel info -c enclose_config.js -v 0.12.7 ./bin/www
+    sudo npm install nw-gyp -g
+
+    sudo nw-gyp rebuild --target=0.12.3
 
 
 TODO Liste
 --------------------
 * Gérer les images des vignettes
-* Intégrer dans un logiciel avec system-tray pour start/stop le serveur
 * Mutualisé les sources avec un mirroir centralisé
 * Gérer les téléchargements multi-source en proposant un lien aria2 (voir aria2.sourceforge.net)
 * Intégré web ui: http://ziahamza.github.io/webui-aria2/
