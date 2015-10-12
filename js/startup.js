@@ -62,7 +62,7 @@
 
   //lancement du serveur
   var child_process = require('child_process');
-  global.main_server = child_process.fork('./js/clustering.js');
+  global.main_server = child_process.exec('./bin/node ./js/clustering.js');
 
   //on tue le serveur quand on quite l'interface
   process.on('exit', function (exitCode) {
