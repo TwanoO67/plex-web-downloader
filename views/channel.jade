@@ -13,7 +13,7 @@ block content
       each video, i in videos
         tr
           td
-            a(href="/movie/#{video.id}")= video.title
+            a(href="/movie/#{video.id}") #{video.title}&nbsp;
           td= video.duree
           td= video.year
       script.

@@ -16,7 +16,7 @@ function addZero(v) {
 };
 
 /* GET home page. */
-router.get('/:id', function(req, res, next) {
+router.get('/:id/:incoming_chan', function(req, res, next) {
   var config = res.locals.config;
   var db = config.init_db();
   var data = [];
@@ -58,7 +58,9 @@ router.get('/:id', function(req, res, next) {
         }
         res.render('show',{
           title: titre,
-          videos: data
+          videos: data,
+          channel_id: req.params.incoming_chan,
+          show_id: req.params.id
         });
     });
 

@@ -20,7 +20,7 @@ router.get('/:id', function(req, res, next) {
     //aprés toute les opération de la base
     function(){
         console.log(shows);
-        res.render('show_list', { title: 'Liste des séries',shows: shows });
+        res.render('show_list', { title: 'Liste des séries',shows: shows, channel_id: req.params.id });
     });
 
   });
