@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Plex-web-downloader by TwanoO67</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Plex-web-downloader</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/TwanoO67/plex-web-downloader" class="btn">View on GitHub</a>
+      <a href="https://github.com/TwanoO67/plex-web-downloader/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/TwanoO67/plex-web-downloader/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="plex-web-downloader" class="anchor" href="#plex-web-downloader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plex Web Downloader</h1>
+
+<p>Ce projet permet de créer une liste de vos fichiers vidéo plex et de les partager aux travers d'une interface web.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>INSTALLATION</h2>
+
+<p><strong>Sur Windows</strong></p>
+
+<p>pré requis, installer git ( <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a> )</p>
+
+<p>pré requis, installer nodejs 0.12.x ( <a href="https://nodejs.org/dist/v0.12.7/">https://nodejs.org/dist/v0.12.7/</a> )</p>
+
+<p>ouvrir l'invite de commande 'cmb', puis se deplacer dans un repertoire où vous voulez installer</p>
+
+<pre><code>git clone https://github.com/TwanoO67/plex-web-downloader.git
+
+cd plex-web-downloader
+
+npm install
+</code></pre>
+
+<p>modifier le fichier config.js, pour y mettre le chemin de la base de données plex (attention il faut doubler les anti-slash et proteger les espaces )</p>
+
+<p>exemple: C:\Users\yourUsername\AppData\Local\Plex\ Media\ Server\Plug-in\ Support\Databases\com.plexapp.plugins.library.db</p>
+
+<pre><code>npm start
+</code></pre>
+
+<p>puis ouvrir dans votre navigateur l'adresse http://localhost:3000</p>
+
+<p><strong>Sous MacOS</strong></p>
+
+<p>pré requis, nodejs</p>
+
+<p>sinon installer homebrew</p>
+
+<pre><code>ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+</code></pre>
+
+<p>et :</p>
+
+<pre><code>brew install node
+
+git clone https://github.com/TwanoO67/plex-web-downloader.git
+
+cd plex-web-downloader
+
+npm install
+</code></pre>
+
+<p>modifier le fichier config.js, pour y mettre le chemin de la base de données plex</p>
+
+<p>exemple: /Users/yourUsername/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db</p>
+
+<pre><code>npm start
+</code></pre>
+
+<p>puis ouvrir dans votre navigateur l'adresse http://localhost:3000</p>
+
+<p><strong>Sous Ubuntu</strong></p>
+
+<p>pré requis nodejs, ou</p>
+
+<pre><code>apt-get install nodejs
+
+ln -s /usr/bin/nodejs /usr/local/bin/node
+</code></pre>
+
+<p>puis, se déplacer dans votre repertoire pour l'install et :</p>
+
+<pre><code>git clone https://github.com/TwanoO67/plex-web-downloader.git
+
+cd plex-web-downloader
+
+npm install
+</code></pre>
+
+<p>modifier le fichier config.js, pour y mettre le chemin de la base de données plex</p>
+
+<p>exemple: /home/yourUsername/plex-config/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db</p>
+
+<pre><code>npm start
+</code></pre>
+
+<p>puis ouvrir dans votre navigateur l'adresse http://localhost:3000</p>
+
+<h2>
+<a id="developpement" class="anchor" href="#developpement" aria-hidden="true"><span class="octicon octicon-link"></span></a>DEVELOPPEMENT</h2>
+
+<p><strong>le projet a été créée initialement avec</strong></p>
+
+<pre><code>node install express -g
+
+node install express-generator -g
+
+express nom_du_projet
+
+cd nom_du_projet
+
+npm install
+</code></pre>
+
+<p><strong>pour installer plex (depuis un dockerfile)</strong></p>
+
+<pre><code>mkdir ~/plex-config
+
+sudo chown 797:797 -R ~/plex-config
+
+sudo docker run -d --restart=always -v ~/plex-config:/config -v ~/Movies:/media/plex -p 32400:32400 wernight/plex-media-server
+
+sudo chmod 777 ~/plex-config/Plex\ Media\ Server/Plug-in\ Support/Databases/*
+
+sudo chmod 777 ~/Movies
+
+sudo ln -s ~/Movies /media/plex
+</code></pre>
+
+<p>puis configurer vos chaines sur: http://localhost:32400/web/index.html</p>
+
+<h2>
+<a id="compilation" class="anchor" href="#compilation" aria-hidden="true"><span class="octicon octicon-link"></span></a>COMPILATION</h2>
+
+<pre><code>npm install enclose -g
+
+  enclose -o bin/mac_bin --loglevel info -c enclose_config.js -v 0.12.7 ./bin/www
+</code></pre>
+
+<h2>
+<a id="todo-liste" class="anchor" href="#todo-liste" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO Liste</h2>
+
+<ul>
+<li>Ajouter une présentation sur l'index, configurable dans config.js</li>
+<li>Gérer les images des vignettes</li>
+<li>Faire une page spéciales pour les séries</li>
+<li>Gérer les téléchargements multi-source en proposant un lien aria2 (voir aria2.sourceforge.net)</li>
+<li>Intégré web ui: <a href="http://ziahamza.github.io/webui-aria2/">http://ziahamza.github.io/webui-aria2/</a>
+</li>
+<li>Mettre en place une limite d'upload activable à la demande</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/TwanoO67/plex-web-downloader">Plex-web-downloader</a> is maintained by <a href="https://github.com/TwanoO67">TwanoO67</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
