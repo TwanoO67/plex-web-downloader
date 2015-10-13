@@ -4,8 +4,32 @@ Plex Web Downloader
 Ce projet permet de créer une liste de vos fichiers vidéo plex et de les partager aux travers d'une interface web.
 
 
-INSTALLATION
+
+INSTALLATION FACILE
 --------------------
+
+Télécharger notre version pré-packagé:
+
+Pour Windows 64 bits (testé sur Seven)
+  [Plex Web Download pour Windows 64bits](https://www.dropbox.com/s/oh6d34vxzw1ga3o/plex_wb_win64.zip?dl=0)
+
+Pour MacOS 64 bits ( testé sur Yosemite )
+  [Plex Web Download pour MacOS 64bits](https://www.dropbox.com/s/q1ouyv6nj0zylkp/plex_wd_osx64.zip?dl=0)
+
+Puis éditer le fichier de configuration pour fournir le chemin vers votre bdd plex.
+(Vous pouvez aussi y parametrer un theme, et un user/mot de passe)
+
+Ensuite ouvrez votre navigateur vers http://localhost:3000/ et enjoy :)
+
+( Vous n'avez plus qu'à rediriger les ports de votre routeur pour partager ce lien avec votre IP public)
+
+![Aperçu](https://www.dropbox.com/s/pdppr39frtoiow4/screenshot.png?dl=0)
+
+
+INSTALLATION MANUELLE
+--------------------
+
+Si vous préférez compiler vous-même la derniere version du projet, ou si votre système d'exploitation n'est pas supporter:
 
 **Sur Windows**
 
@@ -34,13 +58,9 @@ INSTALLATION
 
   pré requis, nodejs
 
-  sinon installer homebrew
-
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  et :
-
     brew install node
+
+  ensuite
 
     git clone https://github.com/TwanoO67/plex-web-downloader.git
 
@@ -125,9 +145,7 @@ COMPILATION
 
 TODO Liste
 --------------------
-* Ajouter une présentation sur l'index, configurable dans config.js
 * Gérer les images des vignettes
-* Faire une page spéciales pour les séries
 * Gérer les téléchargements multi-source en proposant un lien aria2 (voir aria2.sourceforge.net)
 * Intégré web ui: http://ziahamza.github.io/webui-aria2/
 * Mettre en place une limite d'upload activable à la demande
