@@ -1,3 +1,5 @@
 config.js
+database
+database/*
 nodes_modules
 nodes_modules/*

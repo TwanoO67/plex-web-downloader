@@ -1,4 +1,4 @@
-"use strict";
+﻿"use strict";
 var gui = global.window.nwDispatcher.requireNwGui();
 var util = require('util');
 
@@ -77,7 +77,7 @@ class CustomTrayMenu {
       //global.main_win.show();
       //global.main_win.focus();
       this.trayMenu.show();
-      //this.trayMenu.focus();
+      this.trayMenu.focus();
       this.shown = true;
       //console.log('Show custom menu');
     //}

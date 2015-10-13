@@ -1,4 +1,4 @@
-
+﻿
   //sur le master on cree l'interface
   "use strict";
   var gui = require('nw.gui');
@@ -16,7 +16,7 @@
       var child_process = require('child_process');
 
       // exec: spawns a shell.
-      var cp = child_process.exec('open config.js', function(error, stdout, stderr){
+      var cp = child_process.exec('start notepad "config.js"', function(error, stdout, stderr){
         //var gui = require('nw.gui');
         //gui.App.closeAllWindows();
         //global.main_server.kill();
@@ -77,7 +77,14 @@
 
       //lancement du serveur
       var child_process = require('child_process');
-      global.main_server = child_process.exec('./bin/node ./js/clustering.js');
+      global.main_server = child_process.exec('serveur.bat',
+	function (error, stdout, stderr) {
+    	console.log('stdout: ' + stdout);
+    	console.log('stderr: ' + stderr);
+    	if (error !== null) {
+      	    console.log('exec error: ' + error);
+    	}
+      });
 
       //on tue le serveur quand on quite l'interface
       process.on('exit', function (exitCode) {
