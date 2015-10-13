@@ -23,7 +23,7 @@ Ensuite ouvrez votre navigateur vers http://localhost:3000/ et enjoy :)
 
 ( Vous n'avez plus qu'à rediriger les ports de votre routeur pour partager ce lien avec votre IP public)
 
-![Aperçu](https://www.dropbox.com/s/pdppr39frtoiow4/screenshot.png?dl=0)
+![Aperçu](https://raw.githubusercontent.com/TwanoO67/plex-web-downloader/release/public/screenshot.png)
 
 
 INSTALLATION MANUELLE
