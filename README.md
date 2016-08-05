@@ -11,10 +11,10 @@ INSTALLATION FACILE
 Télécharger notre version pré-packagé:
 
 Pour Windows 64 bits (testé sur Seven)
-  [Plex Web Download pour Windows 64bits](https://www.dropbox.com/s/oh6d34vxzw1ga3o/plex_wb_win64.zip?dl=0)
+  [Plex Web Download pour Windows 64bits](http://dl.weberantoine.fr/download.php?file=plex_wd_win64.zip)
 
 Pour MacOS 64 bits ( testé sur Yosemite )
-  [Plex Web Download pour MacOS 64bits](https://www.dropbox.com/s/q1ouyv6nj0zylkp/plex_wd_osx64.zip?dl=0)
+  [Plex Web Download pour MacOS 64bits](http://dl.weberantoine.fr/download.php?file=plex_wd_osx64.zip)
 
 Puis éditer le fichier de configuration pour fournir le chemin vers votre bdd plex.
 (Vous pouvez aussi y parametrer un theme, et un user/mot de passe)
