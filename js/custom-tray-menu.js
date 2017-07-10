@@ -1,6 +1,8 @@
 "use strict";
-var gui = global.window.nwDispatcher.requireNwGui();
+var gui = window.require('nw.gui');
 var util = require('util');
+
+
 
 class CustomTrayMenu {
   constructor(windowPath, trayIcon, windowOptions) {
@@ -17,6 +19,7 @@ class CustomTrayMenu {
 
     this._initTray();
     this._initMenuWindow();
+
 
     this.tray.on('click', this.toggleTrayMenuAt.bind(this));
   }
@@ -45,7 +48,6 @@ class CustomTrayMenu {
       frame: false,
       transparent: true,
       resizable: false,
-      toolbar: false,
       show: false,
       'show_in_taskbar': process.platform == "darwin"
     }, this.menuWndowOptions);
