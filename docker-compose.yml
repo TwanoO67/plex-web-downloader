@@ -1,0 +1,14 @@
+version: '2.0'
+services:
+  plexws:
+     container_name: "plex-ws"
+     image: node:0.12.9
+     volumes:
+     - ".:/usr/src/app"
+     - "/var/lib/plexmediaserver:/var/lib/plexmediaserver"
+     working_dir: /usr/src/app
+     entrypoint: 
+     - npm 
+     - start
+     ports:
+     - "${HTTP_PORT}:3000"

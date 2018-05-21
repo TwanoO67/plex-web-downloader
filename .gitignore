@@ -1,3 +1,5 @@
 config.js
-nodes_modules
-nodes_modules/*
+package-lock.json
+nohup.out
+node_modules
+node_modules/*
