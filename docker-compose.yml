@@ -2,9 +2,10 @@ version: '2.0'
 services:
   plexws:
      container_name: "plex-ws"
-     image: node:0.12.9
+     image: node:6
      volumes:
      - ".:/usr/src/app"
+     - "/media:/media"
      - "/var/lib/plexmediaserver:/var/lib/plexmediaserver"
      working_dir: /usr/src/app
      entrypoint: 
