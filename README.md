@@ -6,6 +6,15 @@ Ce projet permet de créer une liste de vos fichiers vidéo plex et de les parta
 
 INSTALLATION
 --------------------
+**Avec docker-composer**
+
+copier le fichier .env.example en .env
+
+réglé votre port voulu dans .env
+ainsi que l'eventuel mot de passe
+
+puis démarrer le serveur avec:
+`docker-compose up -d`
 
 **Sur Windows**
 
